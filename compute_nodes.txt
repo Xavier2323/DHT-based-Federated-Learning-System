@@ -1,0 +1,8 @@
+csel-kh1250-01.cselabs.umn.edu,9091
+csel-kh1250-02.cselabs.umn.edu,9092
+csel-kh1250-03.cselabs.umn.edu,9093
+csel-kh1250-04.cselabs.umn.edu,9094
+csel-kh1250-05.cselabs.umn.edu,9095
+csel-kh1250-06.cselabs.umn.edu,9096
+csel-kh1250-07.cselabs.umn.edu,9097
+csel-kh1250-08.cselabs.umn.edu,9098
