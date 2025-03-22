@@ -7,13 +7,15 @@ import hashlib
 import socket
 import numpy as np
 from collections import defaultdict
+import logging
+logging.basicConfig(filename='compute_node.log', level=logging.DEBUG)
 
 sys.path.append('gen-py')
 sys.path.insert(0, glob.glob('../thrift-0.19.0/lib/py/build/lib*')[0])
 
 from thrift.transport import TSocket
 from thrift.transport import TTransport
-from thrift.protocol import TBinaryProtocol
+from thrift.protocol import TBinaryProtocol, TCompactProtocol
 from thrift.server import TServer
 
 from service import ComputeNodeService, SupernodeService
@@ -222,7 +224,7 @@ class ComputeNodeHandler:
             while retry_count < max_retries:
                 try:
                     time.sleep(1)  # Simulate delay
-                    
+                        
                     # Call fix_fingers on successor with the initiator_id
                     transport = TSocket.TSocket(self.successor.ip, self.successor.port)
                     # Set a longer timeout (e.g., 5 seconds)
@@ -232,19 +234,24 @@ class ComputeNodeHandler:
                     node = ComputeNodeService.Client(protocol)
                     
                     print(f"Node {self.node_id}: Fixing fingers on successor {self.successor.id}")
+                    
                     transport.open()
+                    print(f"Connection established to {self.successor.ip}:{self.successor.port}")
                     node.fix_fingers(initiator_id)  # Pass the initiator_id
                     transport.close()
                     break  # Success, exit the retry loop
                 except Exception as e:
                     retry_count += 1
+                    
                     print(f"Error propagating fix_fingers (attempt {retry_count}/{max_retries}): {e}")
+
                     if transport.isOpen():
                         transport.close()
                     time.sleep(2)  # Wait before retrying
             
             if retry_count == max_retries:
                 print(f"Failed to propagate fix_fingers after {max_retries} attempts. Continuing...")
+                return ResponseCode.ERROR
         
         return ResponseCode.SUCCESS
     
