@@ -24,17 +24,15 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
     print('Usage: ' + sys.argv[0] + ' [-h host[:port]] [-u url] [-f[ramed]] [-s[sl]] [-novalidate] [-ca_certs certs] [-keyfile keyfile] [-certfile certfile] function [arg1 [arg2...]]')
     print('')
     print('Functions:')
+    print('  NodeAddress find_successor(i32 id)')
+    print('  NodeAddress closest_preceding_node(i32 id)')
+    print('  NodeAddress get_predecessor()')
+    print('  ResponseCode set_predecessor(NodeAddress node)')
+    print('  ResponseCode set_successor(NodeAddress node)')
+    print('  ResponseCode fix_fingers(i32 initiator_id)')
     print('  void put_data(string filename)')
     print('  ModelWeights get_model(string filename)')
-    print('  void fix_fingers()')
-    print('  string print_info()')
-    print('  NodeAddress find_successor(i32 id)')
-    print('  NodeAddress find_predecessor(i32 id)')
-    print('  NodeAddress get_predecessor()')
-    print('  void set_predecessor(NodeAddress pred)')
-    print('  NodeAddress get_successor()')
-    print('  void set_successor(NodeAddress succ)')
-    print('  void notify(NodeAddress node)')
+    print('  ResponseCode print_info()')
     print('')
     sys.exit(0)
 
@@ -114,41 +112,17 @@ protocol = TBinaryProtocol(transport)
 client = ComputeNodeService.Client(protocol)
 transport.open()
 
-if cmd == 'put_data':
-    if len(args) != 1:
-        print('put_data requires 1 args')
-        sys.exit(1)
-    pp.pprint(client.put_data(args[0],))
-
-elif cmd == 'get_model':
-    if len(args) != 1:
-        print('get_model requires 1 args')
-        sys.exit(1)
-    pp.pprint(client.get_model(args[0],))
-
-elif cmd == 'fix_fingers':
-    if len(args) != 0:
-        print('fix_fingers requires 0 args')
-        sys.exit(1)
-    pp.pprint(client.fix_fingers())
-
-elif cmd == 'print_info':
-    if len(args) != 0:
-        print('print_info requires 0 args')
-        sys.exit(1)
-    pp.pprint(client.print_info())
-
-elif cmd == 'find_successor':
+if cmd == 'find_successor':
     if len(args) != 1:
         print('find_successor requires 1 args')
         sys.exit(1)
     pp.pprint(client.find_successor(eval(args[0]),))
 
-elif cmd == 'find_predecessor':
+elif cmd == 'closest_preceding_node':
     if len(args) != 1:
-        print('find_predecessor requires 1 args')
+        print('closest_preceding_node requires 1 args')
         sys.exit(1)
-    pp.pprint(client.find_predecessor(eval(args[0]),))
+    pp.pprint(client.closest_preceding_node(eval(args[0]),))
 
 elif cmd == 'get_predecessor':
     if len(args) != 0:
@@ -162,23 +136,35 @@ elif cmd == 'set_predecessor':
         sys.exit(1)
     pp.pprint(client.set_predecessor(eval(args[0]),))
 
-elif cmd == 'get_successor':
-    if len(args) != 0:
-        print('get_successor requires 0 args')
-        sys.exit(1)
-    pp.pprint(client.get_successor())
-
 elif cmd == 'set_successor':
     if len(args) != 1:
         print('set_successor requires 1 args')
         sys.exit(1)
     pp.pprint(client.set_successor(eval(args[0]),))
 
-elif cmd == 'notify':
+elif cmd == 'fix_fingers':
     if len(args) != 1:
-        print('notify requires 1 args')
+        print('fix_fingers requires 1 args')
         sys.exit(1)
-    pp.pprint(client.notify(eval(args[0]),))
+    pp.pprint(client.fix_fingers(eval(args[0]),))
+
+elif cmd == 'put_data':
+    if len(args) != 1:
+        print('put_data requires 1 args')
+        sys.exit(1)
+    pp.pprint(client.put_data(args[0],))
+
+elif cmd == 'get_model':
+    if len(args) != 1:
+        print('get_model requires 1 args')
+        sys.exit(1)
+    pp.pprint(client.get_model(args[0],))
+
+elif cmd == 'print_info':
+    if len(args) != 0:
+        print('print_info requires 0 args')
+        sys.exit(1)
+    pp.pprint(client.print_info())
 
 else:
     print('Unrecognized method %s' % cmd)

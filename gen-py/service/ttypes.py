@@ -17,27 +17,180 @@ all_structs = []
 
 
 class ResponseCode(object):
-    SUCCESS = 0
-    NACK = 1
-    WAIT = 2
-    NOT_FOUND = 3
-    EMPTY_NETWORK = 4
+    SUCCESS = 200
+    ERROR = 500
+    NACK = 400
 
     _VALUES_TO_NAMES = {
-        0: "SUCCESS",
-        1: "NACK",
-        2: "WAIT",
-        3: "NOT_FOUND",
-        4: "EMPTY_NETWORK",
+        200: "SUCCESS",
+        500: "ERROR",
+        400: "NACK",
     }
 
     _NAMES_TO_VALUES = {
-        "SUCCESS": 0,
-        "NACK": 1,
-        "WAIT": 2,
-        "NOT_FOUND": 3,
-        "EMPTY_NETWORK": 4,
+        "SUCCESS": 200,
+        "ERROR": 500,
+        "NACK": 400,
     }
+
+
+class NodeAddress(object):
+    """
+    Attributes:
+     - ip
+     - port
+     - id
+
+    """
+
+
+    def __init__(self, ip=None, port=None, id=None,):
+        self.ip = ip
+        self.port = port
+        self.id = id
+
+    def read(self, iprot):
+        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
+            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
+            return
+        iprot.readStructBegin()
+        while True:
+            (fname, ftype, fid) = iprot.readFieldBegin()
+            if ftype == TType.STOP:
+                break
+            if fid == 1:
+                if ftype == TType.STRING:
+                    self.ip = iprot.readString().decode('utf-8', errors='replace') if sys.version_info[0] == 2 else iprot.readString()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 2:
+                if ftype == TType.I32:
+                    self.port = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 3:
+                if ftype == TType.I32:
+                    self.id = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            else:
+                iprot.skip(ftype)
+            iprot.readFieldEnd()
+        iprot.readStructEnd()
+
+    def write(self, oprot):
+        if oprot._fast_encode is not None and self.thrift_spec is not None:
+            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
+            return
+        oprot.writeStructBegin('NodeAddress')
+        if self.ip is not None:
+            oprot.writeFieldBegin('ip', TType.STRING, 1)
+            oprot.writeString(self.ip.encode('utf-8') if sys.version_info[0] == 2 else self.ip)
+            oprot.writeFieldEnd()
+        if self.port is not None:
+            oprot.writeFieldBegin('port', TType.I32, 2)
+            oprot.writeI32(self.port)
+            oprot.writeFieldEnd()
+        if self.id is not None:
+            oprot.writeFieldBegin('id', TType.I32, 3)
+            oprot.writeI32(self.id)
+            oprot.writeFieldEnd()
+        oprot.writeFieldStop()
+        oprot.writeStructEnd()
+
+    def validate(self):
+        return
+
+    def __repr__(self):
+        L = ['%s=%r' % (key, value)
+             for key, value in self.__dict__.items()]
+        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+    def __eq__(self, other):
+        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        return not (self == other)
+
+
+class FingerTableEntry(object):
+    """
+    Attributes:
+     - node
+     - start
+     - end
+
+    """
+
+
+    def __init__(self, node=None, start=None, end=None,):
+        self.node = node
+        self.start = start
+        self.end = end
+
+    def read(self, iprot):
+        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
+            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
+            return
+        iprot.readStructBegin()
+        while True:
+            (fname, ftype, fid) = iprot.readFieldBegin()
+            if ftype == TType.STOP:
+                break
+            if fid == 1:
+                if ftype == TType.STRUCT:
+                    self.node = NodeAddress()
+                    self.node.read(iprot)
+                else:
+                    iprot.skip(ftype)
+            elif fid == 2:
+                if ftype == TType.I32:
+                    self.start = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 3:
+                if ftype == TType.I32:
+                    self.end = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            else:
+                iprot.skip(ftype)
+            iprot.readFieldEnd()
+        iprot.readStructEnd()
+
+    def write(self, oprot):
+        if oprot._fast_encode is not None and self.thrift_spec is not None:
+            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
+            return
+        oprot.writeStructBegin('FingerTableEntry')
+        if self.node is not None:
+            oprot.writeFieldBegin('node', TType.STRUCT, 1)
+            self.node.write(oprot)
+            oprot.writeFieldEnd()
+        if self.start is not None:
+            oprot.writeFieldBegin('start', TType.I32, 2)
+            oprot.writeI32(self.start)
+            oprot.writeFieldEnd()
+        if self.end is not None:
+            oprot.writeFieldBegin('end', TType.I32, 3)
+            oprot.writeI32(self.end)
+            oprot.writeFieldEnd()
+        oprot.writeFieldStop()
+        oprot.writeStructEnd()
+
+    def validate(self):
+        return
+
+    def __repr__(self):
+        L = ['%s=%r' % (key, value)
+             for key, value in self.__dict__.items()]
+        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+    def __eq__(self, other):
+        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        return not (self == other)
 
 
 class ModelWeights(object):
@@ -149,98 +302,26 @@ class ModelWeights(object):
 
     def __ne__(self, other):
         return not (self == other)
-
-
-class NodeAddress(object):
-    """
-    Attributes:
-     - ip
-     - port
-     - id
-
-    """
-
-
-    def __init__(self, ip=None, port=None, id=None,):
-        self.ip = ip
-        self.port = port
-        self.id = id
-
-    def read(self, iprot):
-        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
-            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
-            return
-        iprot.readStructBegin()
-        while True:
-            (fname, ftype, fid) = iprot.readFieldBegin()
-            if ftype == TType.STOP:
-                break
-            if fid == 1:
-                if ftype == TType.STRING:
-                    self.ip = iprot.readString().decode('utf-8', errors='replace') if sys.version_info[0] == 2 else iprot.readString()
-                else:
-                    iprot.skip(ftype)
-            elif fid == 2:
-                if ftype == TType.I32:
-                    self.port = iprot.readI32()
-                else:
-                    iprot.skip(ftype)
-            elif fid == 3:
-                if ftype == TType.I32:
-                    self.id = iprot.readI32()
-                else:
-                    iprot.skip(ftype)
-            else:
-                iprot.skip(ftype)
-            iprot.readFieldEnd()
-        iprot.readStructEnd()
-
-    def write(self, oprot):
-        if oprot._fast_encode is not None and self.thrift_spec is not None:
-            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
-            return
-        oprot.writeStructBegin('NodeAddress')
-        if self.ip is not None:
-            oprot.writeFieldBegin('ip', TType.STRING, 1)
-            oprot.writeString(self.ip.encode('utf-8') if sys.version_info[0] == 2 else self.ip)
-            oprot.writeFieldEnd()
-        if self.port is not None:
-            oprot.writeFieldBegin('port', TType.I32, 2)
-            oprot.writeI32(self.port)
-            oprot.writeFieldEnd()
-        if self.id is not None:
-            oprot.writeFieldBegin('id', TType.I32, 3)
-            oprot.writeI32(self.id)
-            oprot.writeFieldEnd()
-        oprot.writeFieldStop()
-        oprot.writeStructEnd()
-
-    def validate(self):
-        return
-
-    def __repr__(self):
-        L = ['%s=%r' % (key, value)
-             for key, value in self.__dict__.items()]
-        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
-
-    def __eq__(self, other):
-        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not (self == other)
-all_structs.append(ModelWeights)
-ModelWeights.thrift_spec = (
-    None,  # 0
-    (1, TType.LIST, 'V', (TType.LIST, (TType.DOUBLE, None, False), False), None, ),  # 1
-    (2, TType.LIST, 'W', (TType.LIST, (TType.DOUBLE, None, False), False), None, ),  # 2
-    (3, TType.BOOL, 'training_complete', None, None, ),  # 3
-)
 all_structs.append(NodeAddress)
 NodeAddress.thrift_spec = (
     None,  # 0
     (1, TType.STRING, 'ip', 'UTF8', None, ),  # 1
     (2, TType.I32, 'port', None, None, ),  # 2
     (3, TType.I32, 'id', None, None, ),  # 3
+)
+all_structs.append(FingerTableEntry)
+FingerTableEntry.thrift_spec = (
+    None,  # 0
+    (1, TType.STRUCT, 'node', [NodeAddress, None], None, ),  # 1
+    (2, TType.I32, 'start', None, None, ),  # 2
+    (3, TType.I32, 'end', None, None, ),  # 3
+)
+all_structs.append(ModelWeights)
+ModelWeights.thrift_spec = (
+    None,  # 0
+    (1, TType.LIST, 'V', (TType.LIST, (TType.DOUBLE, None, False), False), None, ),  # 1
+    (2, TType.LIST, 'W', (TType.LIST, (TType.DOUBLE, None, False), False), None, ),  # 2
+    (3, TType.BOOL, 'training_complete', None, None, ),  # 3
 )
 fix_spec(all_structs)
 del all_structs
