@@ -122,6 +122,7 @@ class ComputeNodeHandler:
         
         try:
             transport.open()
+            print(f"Connected to entry node {entry_node.id} at {entry_node.ip}:{entry_node.port}")
             
             # Find successor for this node's ID
             self_address = NodeAddress(ip=self.ip, port=self.port, id=self.node_id)
@@ -137,6 +138,7 @@ class ComputeNodeHandler:
             succ_node = ComputeNodeService.Client(protocol2)
             
             transport2.open()
+            print(f"Connected to successor {self.successor.id} at {self.successor.ip}:{self.successor.port}")
             
             # Get predecessor from successor and update successor's predecessor to this node
             self.predecessor = succ_node.get_predecessor()
@@ -149,7 +151,11 @@ class ComputeNodeHandler:
             pred_node = ComputeNodeService.Client(protocol3)
             
             transport3.open()
+            print(f"Connected to predecessor {self.predecessor.id} at {self.predecessor.ip}:{self.predecessor.port}")
             pred_node.set_successor(self_address)
+            
+            # Close the connection to predecessor
+            print(f"Closing connection to predecessor {self.predecessor.id}")
             transport3.close()
             
             # Initialize finger table
@@ -159,8 +165,11 @@ class ComputeNodeHandler:
             print(f"Node {self.node_id}: Fixing fingers for node {self.successor.id}")
             succ_node.fix_fingers(self.node_id)  # Pass the initiator node ID
             
+            print(f"Closing connection to successor {self.successor.id}")
             transport2.close()
+            print(f"Closing connection to entry node {entry_node.id}")
             transport.close()
+            
         except Exception as e:
             print(f"Error joining existing network: {e}")
             if transport.isOpen():
@@ -191,7 +200,7 @@ class ComputeNodeHandler:
             end = (self.node_id + 2**(i+1)) % self.max_nodes
             
             # Find successor for this finger
-            successor = self.find_successor_local(start)
+            successor = self.find_successor(start)
             
             self.finger_table.append(FingerTableEntry(
                 node=successor,
@@ -202,7 +211,7 @@ class ComputeNodeHandler:
         print(f"Initialized finger table with {len(self.finger_table)} entries")
     
     def fix_fingers(self, initiator_id=None):
-        """Update finger table entries and propagate the fix_fingers call"""
+        """Update finger table entries and propagate the fix_fingers call""" 
         print(f"Node {self.node_id}: Fixing fingers")
         
         # If this is the first call, set initiator_id to this node's ID
@@ -238,6 +247,8 @@ class ComputeNodeHandler:
                     transport.open()
                     print(f"Connection established to {self.successor.ip}:{self.successor.port}")
                     node.fix_fingers(initiator_id)  # Pass the initiator_id
+                    
+                    print(f"Closing connection to successor {self.successor.id}")
                     transport.close()
                     break  # Success, exit the retry loop
                 except Exception as e:
@@ -266,6 +277,9 @@ class ComputeNodeHandler:
         # Otherwise, forward the query to the closest preceding node
         closest_preceding = self.closest_preceding_node(id)
         
+        print(f"Node {self.node_id}: Closest preceding node for {id} is {closest_preceding.id}")
+        
+        # If closest preceding node is this node, return successor
         if closest_preceding.id == self.node_id:
             return self.successor
         
@@ -275,7 +289,9 @@ class ComputeNodeHandler:
             protocol = TBinaryProtocol.TBinaryProtocol(transport)
             node = ComputeNodeService.Client(protocol)
             
+            
             transport.open()
+            print(f"Node {self.node_id}: Forwarding find_successor to node {closest_preceding.id}")
             result = node.find_successor(id)
             transport.close()
             

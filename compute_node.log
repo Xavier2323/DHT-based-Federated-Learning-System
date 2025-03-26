@@ -160,3 +160,663 @@ Traceback (most recent call last):
     handle.connect(sockaddr)
 ConnectionRefusedError: [Errno 111] Connection refused
 ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.204', 9094)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.204', 9094)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.170', 9090)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.170', 9090)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.203', 9093)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.203', 9093)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
+INFO:thrift.transport.TSocket:Could not connect to ('134.84.182.202', 9092)
+Traceback (most recent call last):
+  File "/home/hsu00191/Distributed_Systems/PA2/../thrift-0.19.0/lib/py/build/lib.linux-x86_64-cpython-312/thrift/transport/TSocket.py", line 140, in open
+    handle.connect(sockaddr)
+ConnectionRefusedError: [Errno 111] Connection refused
+ERROR:thrift.transport.TSocket:Could not connect to any of [('134.84.182.202', 9092)]
