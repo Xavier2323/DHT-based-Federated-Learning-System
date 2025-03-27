@@ -113,6 +113,75 @@ class NodeAddress(object):
         return not (self == other)
 
 
+class NodeInfo(object):
+    """
+    Attributes:
+     - nodeAddress
+     - currentSize
+
+    """
+
+
+    def __init__(self, nodeAddress=None, currentSize=None,):
+        self.nodeAddress = nodeAddress
+        self.currentSize = currentSize
+
+    def read(self, iprot):
+        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
+            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
+            return
+        iprot.readStructBegin()
+        while True:
+            (fname, ftype, fid) = iprot.readFieldBegin()
+            if ftype == TType.STOP:
+                break
+            if fid == 1:
+                if ftype == TType.STRUCT:
+                    self.nodeAddress = NodeAddress()
+                    self.nodeAddress.read(iprot)
+                else:
+                    iprot.skip(ftype)
+            elif fid == 2:
+                if ftype == TType.I32:
+                    self.currentSize = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            else:
+                iprot.skip(ftype)
+            iprot.readFieldEnd()
+        iprot.readStructEnd()
+
+    def write(self, oprot):
+        if oprot._fast_encode is not None and self.thrift_spec is not None:
+            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
+            return
+        oprot.writeStructBegin('NodeInfo')
+        if self.nodeAddress is not None:
+            oprot.writeFieldBegin('nodeAddress', TType.STRUCT, 1)
+            self.nodeAddress.write(oprot)
+            oprot.writeFieldEnd()
+        if self.currentSize is not None:
+            oprot.writeFieldBegin('currentSize', TType.I32, 2)
+            oprot.writeI32(self.currentSize)
+            oprot.writeFieldEnd()
+        oprot.writeFieldStop()
+        oprot.writeStructEnd()
+
+    def validate(self):
+        return
+
+    def __repr__(self):
+        L = ['%s=%r' % (key, value)
+             for key, value in self.__dict__.items()]
+        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+    def __eq__(self, other):
+        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        return not (self == other)
+
+
 class FingerTableEntry(object):
     """
     Attributes:
@@ -308,6 +377,12 @@ NodeAddress.thrift_spec = (
     (1, TType.STRING, 'ip', 'UTF8', None, ),  # 1
     (2, TType.I32, 'port', None, None, ),  # 2
     (3, TType.I32, 'id', None, None, ),  # 3
+)
+all_structs.append(NodeInfo)
+NodeInfo.thrift_spec = (
+    None,  # 0
+    (1, TType.STRUCT, 'nodeAddress', [NodeAddress, None], None, ),  # 1
+    (2, TType.I32, 'currentSize', None, None, ),  # 2
 )
 all_structs.append(FingerTableEntry)
 FingerTableEntry.thrift_spec = (

@@ -26,7 +26,7 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
     print('Functions:')
     print('  i32 request_join(i32 port)')
     print('  ResponseCode confirm_join(i32 id)')
-    print('  NodeAddress get_node()')
+    print('  NodeInfo get_node()')
     print('')
     sys.exit(0)
 

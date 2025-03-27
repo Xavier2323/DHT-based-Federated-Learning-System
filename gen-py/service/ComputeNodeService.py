@@ -27,14 +27,6 @@ class Iface(object):
         """
         pass
 
-    def closest_preceding_node(self, id):
-        """
-        Parameters:
-         - id
-
-        """
-        pass
-
     def get_predecessor(self):
         pass
 
@@ -54,10 +46,12 @@ class Iface(object):
         """
         pass
 
-    def fix_fingers(self, initiator_id):
+    def fix_fingers(self, initiator_id, hop_count, max_hops):
         """
         Parameters:
          - initiator_id
+         - hop_count
+         - max_hops
 
         """
         pass
@@ -120,38 +114,6 @@ class Client(Iface):
         if result.success is not None:
             return result.success
         raise TApplicationException(TApplicationException.MISSING_RESULT, "find_successor failed: unknown result")
-
-    def closest_preceding_node(self, id):
-        """
-        Parameters:
-         - id
-
-        """
-        self.send_closest_preceding_node(id)
-        return self.recv_closest_preceding_node()
-
-    def send_closest_preceding_node(self, id):
-        self._oprot.writeMessageBegin('closest_preceding_node', TMessageType.CALL, self._seqid)
-        args = closest_preceding_node_args()
-        args.id = id
-        args.write(self._oprot)
-        self._oprot.writeMessageEnd()
-        self._oprot.trans.flush()
-
-    def recv_closest_preceding_node(self):
-        iprot = self._iprot
-        (fname, mtype, rseqid) = iprot.readMessageBegin()
-        if mtype == TMessageType.EXCEPTION:
-            x = TApplicationException()
-            x.read(iprot)
-            iprot.readMessageEnd()
-            raise x
-        result = closest_preceding_node_result()
-        result.read(iprot)
-        iprot.readMessageEnd()
-        if result.success is not None:
-            return result.success
-        raise TApplicationException(TApplicationException.MISSING_RESULT, "closest_preceding_node failed: unknown result")
 
     def get_predecessor(self):
         self.send_get_predecessor()
@@ -243,19 +205,23 @@ class Client(Iface):
             return result.success
         raise TApplicationException(TApplicationException.MISSING_RESULT, "set_successor failed: unknown result")
 
-    def fix_fingers(self, initiator_id):
+    def fix_fingers(self, initiator_id, hop_count, max_hops):
         """
         Parameters:
          - initiator_id
+         - hop_count
+         - max_hops
 
         """
-        self.send_fix_fingers(initiator_id)
+        self.send_fix_fingers(initiator_id, hop_count, max_hops)
         return self.recv_fix_fingers()
 
-    def send_fix_fingers(self, initiator_id):
+    def send_fix_fingers(self, initiator_id, hop_count, max_hops):
         self._oprot.writeMessageBegin('fix_fingers', TMessageType.CALL, self._seqid)
         args = fix_fingers_args()
         args.initiator_id = initiator_id
+        args.hop_count = hop_count
+        args.max_hops = max_hops
         args.write(self._oprot)
         self._oprot.writeMessageEnd()
         self._oprot.trans.flush()
@@ -282,14 +248,30 @@ class Client(Iface):
 
         """
         self.send_put_data(filename)
+        return self.recv_put_data()
 
     def send_put_data(self, filename):
-        self._oprot.writeMessageBegin('put_data', TMessageType.ONEWAY, self._seqid)
+        self._oprot.writeMessageBegin('put_data', TMessageType.CALL, self._seqid)
         args = put_data_args()
         args.filename = filename
         args.write(self._oprot)
         self._oprot.writeMessageEnd()
         self._oprot.trans.flush()
+
+    def recv_put_data(self):
+        iprot = self._iprot
+        (fname, mtype, rseqid) = iprot.readMessageBegin()
+        if mtype == TMessageType.EXCEPTION:
+            x = TApplicationException()
+            x.read(iprot)
+            iprot.readMessageEnd()
+            raise x
+        result = put_data_result()
+        result.read(iprot)
+        iprot.readMessageEnd()
+        if result.success is not None:
+            return result.success
+        raise TApplicationException(TApplicationException.MISSING_RESULT, "put_data failed: unknown result")
 
     def get_model(self, filename):
         """
@@ -355,7 +337,6 @@ class Processor(Iface, TProcessor):
         self._handler = handler
         self._processMap = {}
         self._processMap["find_successor"] = Processor.process_find_successor
-        self._processMap["closest_preceding_node"] = Processor.process_closest_preceding_node
         self._processMap["get_predecessor"] = Processor.process_get_predecessor
         self._processMap["set_predecessor"] = Processor.process_set_predecessor
         self._processMap["set_successor"] = Processor.process_set_successor
@@ -404,29 +385,6 @@ class Processor(Iface, TProcessor):
             msg_type = TMessageType.EXCEPTION
             result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
         oprot.writeMessageBegin("find_successor", msg_type, seqid)
-        result.write(oprot)
-        oprot.writeMessageEnd()
-        oprot.trans.flush()
-
-    def process_closest_preceding_node(self, seqid, iprot, oprot):
-        args = closest_preceding_node_args()
-        args.read(iprot)
-        iprot.readMessageEnd()
-        result = closest_preceding_node_result()
-        try:
-            result.success = self._handler.closest_preceding_node(args.id)
-            msg_type = TMessageType.REPLY
-        except TTransport.TTransportException:
-            raise
-        except TApplicationException as ex:
-            logging.exception('TApplication exception in handler')
-            msg_type = TMessageType.EXCEPTION
-            result = ex
-        except Exception:
-            logging.exception('Unexpected exception in handler')
-            msg_type = TMessageType.EXCEPTION
-            result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
-        oprot.writeMessageBegin("closest_preceding_node", msg_type, seqid)
         result.write(oprot)
         oprot.writeMessageEnd()
         oprot.trans.flush()
@@ -506,7 +464,7 @@ class Processor(Iface, TProcessor):
         iprot.readMessageEnd()
         result = fix_fingers_result()
         try:
-            result.success = self._handler.fix_fingers(args.initiator_id)
+            result.success = self._handler.fix_fingers(args.initiator_id, args.hop_count, args.max_hops)
             msg_type = TMessageType.REPLY
         except TTransport.TTransportException:
             raise
@@ -527,12 +485,24 @@ class Processor(Iface, TProcessor):
         args = put_data_args()
         args.read(iprot)
         iprot.readMessageEnd()
+        result = put_data_result()
         try:
-            self._handler.put_data(args.filename)
+            result.success = self._handler.put_data(args.filename)
+            msg_type = TMessageType.REPLY
         except TTransport.TTransportException:
             raise
+        except TApplicationException as ex:
+            logging.exception('TApplication exception in handler')
+            msg_type = TMessageType.EXCEPTION
+            result = ex
         except Exception:
-            logging.exception('Exception in oneway handler')
+            logging.exception('Unexpected exception in handler')
+            msg_type = TMessageType.EXCEPTION
+            result = TApplicationException(TApplicationException.INTERNAL_ERROR, 'Internal error')
+        oprot.writeMessageBegin("put_data", msg_type, seqid)
+        result.write(oprot)
+        oprot.writeMessageEnd()
+        oprot.trans.flush()
 
     def process_get_model(self, seqid, iprot, oprot):
         args = get_model_args()
@@ -703,130 +673,6 @@ class find_successor_result(object):
         return not (self == other)
 all_structs.append(find_successor_result)
 find_successor_result.thrift_spec = (
-    (0, TType.STRUCT, 'success', [NodeAddress, None], None, ),  # 0
-)
-
-
-class closest_preceding_node_args(object):
-    """
-    Attributes:
-     - id
-
-    """
-
-
-    def __init__(self, id=None,):
-        self.id = id
-
-    def read(self, iprot):
-        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
-            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
-            return
-        iprot.readStructBegin()
-        while True:
-            (fname, ftype, fid) = iprot.readFieldBegin()
-            if ftype == TType.STOP:
-                break
-            if fid == 1:
-                if ftype == TType.I32:
-                    self.id = iprot.readI32()
-                else:
-                    iprot.skip(ftype)
-            else:
-                iprot.skip(ftype)
-            iprot.readFieldEnd()
-        iprot.readStructEnd()
-
-    def write(self, oprot):
-        if oprot._fast_encode is not None and self.thrift_spec is not None:
-            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
-            return
-        oprot.writeStructBegin('closest_preceding_node_args')
-        if self.id is not None:
-            oprot.writeFieldBegin('id', TType.I32, 1)
-            oprot.writeI32(self.id)
-            oprot.writeFieldEnd()
-        oprot.writeFieldStop()
-        oprot.writeStructEnd()
-
-    def validate(self):
-        return
-
-    def __repr__(self):
-        L = ['%s=%r' % (key, value)
-             for key, value in self.__dict__.items()]
-        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
-
-    def __eq__(self, other):
-        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not (self == other)
-all_structs.append(closest_preceding_node_args)
-closest_preceding_node_args.thrift_spec = (
-    None,  # 0
-    (1, TType.I32, 'id', None, None, ),  # 1
-)
-
-
-class closest_preceding_node_result(object):
-    """
-    Attributes:
-     - success
-
-    """
-
-
-    def __init__(self, success=None,):
-        self.success = success
-
-    def read(self, iprot):
-        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
-            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
-            return
-        iprot.readStructBegin()
-        while True:
-            (fname, ftype, fid) = iprot.readFieldBegin()
-            if ftype == TType.STOP:
-                break
-            if fid == 0:
-                if ftype == TType.STRUCT:
-                    self.success = NodeAddress()
-                    self.success.read(iprot)
-                else:
-                    iprot.skip(ftype)
-            else:
-                iprot.skip(ftype)
-            iprot.readFieldEnd()
-        iprot.readStructEnd()
-
-    def write(self, oprot):
-        if oprot._fast_encode is not None and self.thrift_spec is not None:
-            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
-            return
-        oprot.writeStructBegin('closest_preceding_node_result')
-        if self.success is not None:
-            oprot.writeFieldBegin('success', TType.STRUCT, 0)
-            self.success.write(oprot)
-            oprot.writeFieldEnd()
-        oprot.writeFieldStop()
-        oprot.writeStructEnd()
-
-    def validate(self):
-        return
-
-    def __repr__(self):
-        L = ['%s=%r' % (key, value)
-             for key, value in self.__dict__.items()]
-        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
-
-    def __eq__(self, other):
-        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
-
-    def __ne__(self, other):
-        return not (self == other)
-all_structs.append(closest_preceding_node_result)
-closest_preceding_node_result.thrift_spec = (
     (0, TType.STRUCT, 'success', [NodeAddress, None], None, ),  # 0
 )
 
@@ -1188,12 +1034,16 @@ class fix_fingers_args(object):
     """
     Attributes:
      - initiator_id
+     - hop_count
+     - max_hops
 
     """
 
 
-    def __init__(self, initiator_id=None,):
+    def __init__(self, initiator_id=-1, hop_count=0, max_hops=5,):
         self.initiator_id = initiator_id
+        self.hop_count = hop_count
+        self.max_hops = max_hops
 
     def read(self, iprot):
         if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
@@ -1209,6 +1059,16 @@ class fix_fingers_args(object):
                     self.initiator_id = iprot.readI32()
                 else:
                     iprot.skip(ftype)
+            elif fid == 2:
+                if ftype == TType.I32:
+                    self.hop_count = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            elif fid == 3:
+                if ftype == TType.I32:
+                    self.max_hops = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
             else:
                 iprot.skip(ftype)
             iprot.readFieldEnd()
@@ -1222,6 +1082,14 @@ class fix_fingers_args(object):
         if self.initiator_id is not None:
             oprot.writeFieldBegin('initiator_id', TType.I32, 1)
             oprot.writeI32(self.initiator_id)
+            oprot.writeFieldEnd()
+        if self.hop_count is not None:
+            oprot.writeFieldBegin('hop_count', TType.I32, 2)
+            oprot.writeI32(self.hop_count)
+            oprot.writeFieldEnd()
+        if self.max_hops is not None:
+            oprot.writeFieldBegin('max_hops', TType.I32, 3)
+            oprot.writeI32(self.max_hops)
             oprot.writeFieldEnd()
         oprot.writeFieldStop()
         oprot.writeStructEnd()
@@ -1242,7 +1110,9 @@ class fix_fingers_args(object):
 all_structs.append(fix_fingers_args)
 fix_fingers_args.thrift_spec = (
     None,  # 0
-    (1, TType.I32, 'initiator_id', None, None, ),  # 1
+    (1, TType.I32, 'initiator_id', None, -1, ),  # 1
+    (2, TType.I32, 'hop_count', None, 0, ),  # 2
+    (3, TType.I32, 'max_hops', None, 5, ),  # 3
 )
 
 
@@ -1366,6 +1236,67 @@ all_structs.append(put_data_args)
 put_data_args.thrift_spec = (
     None,  # 0
     (1, TType.STRING, 'filename', 'UTF8', None, ),  # 1
+)
+
+
+class put_data_result(object):
+    """
+    Attributes:
+     - success
+
+    """
+
+
+    def __init__(self, success=None,):
+        self.success = success
+
+    def read(self, iprot):
+        if iprot._fast_decode is not None and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None:
+            iprot._fast_decode(self, iprot, [self.__class__, self.thrift_spec])
+            return
+        iprot.readStructBegin()
+        while True:
+            (fname, ftype, fid) = iprot.readFieldBegin()
+            if ftype == TType.STOP:
+                break
+            if fid == 0:
+                if ftype == TType.I32:
+                    self.success = iprot.readI32()
+                else:
+                    iprot.skip(ftype)
+            else:
+                iprot.skip(ftype)
+            iprot.readFieldEnd()
+        iprot.readStructEnd()
+
+    def write(self, oprot):
+        if oprot._fast_encode is not None and self.thrift_spec is not None:
+            oprot.trans.write(oprot._fast_encode(self, [self.__class__, self.thrift_spec]))
+            return
+        oprot.writeStructBegin('put_data_result')
+        if self.success is not None:
+            oprot.writeFieldBegin('success', TType.I32, 0)
+            oprot.writeI32(self.success)
+            oprot.writeFieldEnd()
+        oprot.writeFieldStop()
+        oprot.writeStructEnd()
+
+    def validate(self):
+        return
+
+    def __repr__(self):
+        L = ['%s=%r' % (key, value)
+             for key, value in self.__dict__.items()]
+        return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+    def __eq__(self, other):
+        return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+    def __ne__(self, other):
+        return not (self == other)
+all_structs.append(put_data_result)
+put_data_result.thrift_spec = (
+    (0, TType.I32, 'success', None, None, ),  # 0
 )
 
 

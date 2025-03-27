@@ -14,7 +14,7 @@ from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
 from service import SupernodeService
-from service.ttypes import NodeAddress, ResponseCode
+from service.ttypes import NodeAddress, ResponseCode, NodeInfo
 
 class SupernodeHandler:
     def __init__(self, max_nodes=10):
@@ -98,11 +98,12 @@ class SupernodeHandler:
         # Return a random node from the network
         if not self.nodes:
             print("Empty network, no nodes available")
-            return NodeAddress(ip="", port=0, id=-1)
+            return NodeInfo(NodeAddress(ip="", port=0, id=-1), 0)
         
         random_id = random.choice(list(self.nodes.keys()))
         print(f"Returning random node with ID {random_id}")
-        return self.nodes[random_id]
+        # Return the node address and the current nework size
+        return NodeInfo(self.nodes[random_id], len(self.nodes))
 
 if __name__ == '__main__':
     handler = SupernodeHandler()

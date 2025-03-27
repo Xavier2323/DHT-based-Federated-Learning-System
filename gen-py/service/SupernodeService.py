@@ -549,7 +549,7 @@ class get_node_result(object):
                 break
             if fid == 0:
                 if ftype == TType.STRUCT:
-                    self.success = NodeAddress()
+                    self.success = NodeInfo()
                     self.success.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -585,7 +585,7 @@ class get_node_result(object):
         return not (self == other)
 all_structs.append(get_node_result)
 get_node_result.thrift_spec = (
-    (0, TType.STRUCT, 'success', [NodeAddress, None], None, ),  # 0
+    (0, TType.STRUCT, 'success', [NodeInfo, None], None, ),  # 0
 )
 fix_spec(all_structs)
 del all_structs

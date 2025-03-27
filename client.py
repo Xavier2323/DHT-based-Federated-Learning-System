@@ -33,7 +33,11 @@ class Client:
             transport.open()
             
             # Get a node in the network
-            node_address = supernode.get_node()
+            node_address_info = supernode.get_node()
+            node_address = node_address_info.nodeAddress
+            current_size = node_address_info.currentSize
+            
+            print(f"Current size of the network: {current_size}")
             
             if node_address.id == -1:
                 print("No nodes in the network")

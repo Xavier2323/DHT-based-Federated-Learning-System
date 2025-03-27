@@ -10,6 +10,11 @@ struct NodeAddress {
     3: i32 id
 }
 
+struct NodeInfo {
+    1: NodeAddress nodeAddress,
+    2: i32 currentSize
+}
+
 struct FingerTableEntry {
     1: NodeAddress node,
     2: i32 start,
@@ -25,22 +30,21 @@ struct ModelWeights {
 service SupernodeService {
     i32 request_join(1: i32 port),
     ResponseCode confirm_join(1: i32 id),
-    NodeAddress get_node()
+    NodeInfo get_node()
 }
 
 service ComputeNodeService {
-    // Chord protocol methods
+    // Node network management methods
     NodeAddress find_successor(1: i32 id),
-    NodeAddress closest_preceding_node(1: i32 id),
     NodeAddress get_predecessor(),
     ResponseCode set_predecessor(1: NodeAddress node),
     ResponseCode set_successor(1: NodeAddress node),
-    ResponseCode fix_fingers(1: optional i32 initiator_id),
+    ResponseCode fix_fingers(1: i32 initiator_id = -1, 2: i32 hop_count = 0, 3: i32 max_hops = 5)
     
-    // Data distribution and model methods
-    oneway void put_data(1: string filename),
+    // Data distribution methods
+    ResponseCode put_data(1: string filename),
     ModelWeights get_model(1: string filename),
     
-    // Debugging
+    // Utility methods
     ResponseCode print_info()
 }
