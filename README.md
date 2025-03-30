@@ -1,5 +1,5 @@
 # DHT-based Federated Learning System
-## Jun-Ting Hsu (hsu00191@umn.edu), Thomas Knickerbocker (knick073@umn.edu)
+### Jun-Ting Hsu (hsu00191@umn.edu), Thomas Knickerbocker (knick073@umn.edu)
 
 ## Description
 A federated learning system with a network of nodes capable of performing a machine learning tasks using a decentralized peer-to-peer Chord network. T compute nodes form a Chord DHT network. Each compute node is be assigned a fixed set of training data files by a client through the DHT network, and carries out local training on its own data. The client will then collect the results of the local training from each node (without any centralized parameter server). Compute nodes in the system initially connect with the supernode to receive a unique node ID and connection point to an existing node in the Chord network. Using this connection point, new nodes initialize or connect to the network following the Chord protocol. After the network has been populated, ML training data is be distributed across all nodes, locally trained, and aggregated by the client to validate a given dataset.
