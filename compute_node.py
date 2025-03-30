@@ -413,6 +413,10 @@ class ComputeNodeHandler:
         
         print(f"Node {self.node_id}: Received put_data for file {filename} with key {key}")
         
+        with open(f'routing/{filename}_routing.txt', 'a') as file:
+            file.write(f"Node ID: {self.node_id}, Filename: {filename}, Key: {key}, Time: {time.time()}\n")
+
+        
         # Check if this node is responsible for this key
         if self.is_between(key, self.predecessor.id, self.node_id, True):
             print(f"Node {self.node_id}: Storing file {filename}")
@@ -588,6 +592,6 @@ if __name__ == '__main__':
         sys.exit(1)
     
     port = int(sys.argv[1])
-    supernode_host = 'csel-kh1250-10.cselabs.umn.edu'
+    supernode_host = 'csel-kh1250-06.cselabs.umn.edu'
     supernode_port = 9090
     run_server(port, supernode_host, supernode_port)
