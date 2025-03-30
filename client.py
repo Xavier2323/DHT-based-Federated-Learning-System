@@ -183,6 +183,7 @@ if __name__ == '__main__':
         print("No files to distribute")
         sys.exit(1)
     
+    start_time = time.time()
     # Get trained models
     models = client.get_models(files)
     
@@ -195,5 +196,6 @@ if __name__ == '__main__':
     
     # Validate the aggregated model
     validation_error = client.validate_model(avg_V, avg_W, validation_file)
-    
     print(f"Validation error: {validation_error}")
+    time_taken = time.time() - start_time
+    print(f"Time taken: {time_taken}")

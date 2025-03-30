@@ -1,6 +1,7 @@
 import glob
 import sys
 import os
+import shutil
 sys.path.append('gen-py')
 sys.path.insert(0, glob.glob('../thrift-0.19.0/lib/py/build/lib*')[0])
 
@@ -106,6 +107,16 @@ class SupernodeHandler:
         return NodeInfo(self.nodes[random_id], len(self.nodes))
 
 if __name__ == '__main__':
+    routing_dir = "./routing"
+    if os.path.exists(routing_dir):
+        shutil.rmtree(routing_dir)
+        print(f"Cleaned {routing_dir}")
+
+    # Create a new directory
+    os.makedirs(routing_dir)
+    print(f"Created {routing_dir}")
+
+
     handler = SupernodeHandler()
     processor = SupernodeService.Processor(handler)
     transport = TSocket.TServerSocket(host='0.0.0.0', port=9090)
