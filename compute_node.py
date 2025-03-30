@@ -6,16 +6,14 @@ import threading
 import hashlib
 import socket
 import numpy as np
-from collections import defaultdict
 import logging
-logging.basicConfig(filename='compute_node.log', level=logging.DEBUG)
 
+# Add Thrift generated code to path
 sys.path.append('gen-py')
 sys.path.insert(0, glob.glob('../thrift-0.19.0/lib/py/build/lib*')[0])
 
-from thrift.transport import TSocket
-from thrift.transport import TTransport
-from thrift.protocol import TBinaryProtocol, TCompactProtocol
+from thrift.transport import TSocket, TTransport
+from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
 from service import ComputeNodeService, SupernodeService
@@ -32,7 +30,7 @@ def is_port_open(ip, port, timeout=10):
                 print(f"Successor {ip}:{port} is reachable!")
                 return True
         print(f"Waiting for {ip}:{port} to open...")
-        time.sleep(2)  # Retry every 2 seconds
+        time.sleep(2)
     return False
 
 class ComputeNodeHandler:
@@ -41,26 +39,26 @@ class ComputeNodeHandler:
         self.supernode_host = supernode_host
         self.supernode_port = supernode_port
         self.max_nodes = max_nodes
-        # Create a socket to determine the external IP
+        
+        # Get IP address
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
             sock.connect(("8.8.8.8", 80))
             self.ip = sock.getsockname()[0]
         finally:
             sock.close()
-
         
         # Node identity and network state
         self.node_id = None
         self.predecessor = None
         self.successor = None
         self.finger_table = []
-        self.entry_node = None  # Store the entry node when joining
+        self.entry_node = None
         
         # Data storage
-        self.stored_data = {}  # key: filename, value: True if training completed
-        self.models = {}  # key: filename, value: (V, W) weights
-        self.training_lock = threading.Lock()  # Lock for training operations
+        self.stored_data = {}
+        self.models = {}
+        self.training_lock = threading.Lock()
         
         # ML parameters
         self.k = 26  # Number of output classes (letters)
@@ -72,7 +70,6 @@ class ComputeNodeHandler:
         self.join_network()
         
     def join_network(self):
-        """Join the Chord DHT network through the supernode"""
         try:
             # Connect to supernode
             transport = TSocket.TSocket(self.supernode_host, self.supernode_port)
@@ -126,7 +123,6 @@ class ComputeNodeHandler:
             sys.exit(1)
     
     def join_existing_network(self, entry_node, current_size):
-        """Join an existing Chord network through entry_node with improved error handling"""
         # Store the entry node for later use
         self.entry_node = entry_node
         
@@ -138,6 +134,8 @@ class ComputeNodeHandler:
                 transport = TTransport.TBufferedTransport(transport)
                 protocol = TBinaryProtocol.TBinaryProtocol(transport)
                 node = ComputeNodeService.Client(protocol)
+                transport2 = None
+                transport3 = None
                 
                 transport.open()
                 print(f"Connected to entry node {entry_node.id} at {entry_node.ip}:{entry_node.port}")
@@ -159,7 +157,7 @@ class ComputeNodeHandler:
                 # Set successor
                 self.successor = successor_address
                 
-                # Get predecessor from successor with robust connection
+                # Get predecessor from successor
                 transport2 = TSocket.TSocket(successor_address.ip, successor_address.port)
                 transport2 = TTransport.TBufferedTransport(transport2)
                 protocol2 = TBinaryProtocol.TBinaryProtocol(transport2)
@@ -205,7 +203,6 @@ class ComputeNodeHandler:
                     except:
                         pass
                 
-                # Wait before retry
                 time.sleep(2)
         
         # If all attempts fail
@@ -213,7 +210,6 @@ class ComputeNodeHandler:
         sys.exit(1)
 
     def init_finger_table(self):
-        """Initialize finger table with appropriate entries"""
         self.finger_table = []
         
         # Calculate number of fingers needed (log base 2 of max_nodes)
@@ -247,12 +243,10 @@ class ComputeNodeHandler:
         print(f"Initialized finger table with {len(self.finger_table)} entries")
         
     def fix_fingers(self, initiator_id=None, hop_count=0, max_hops=10):
-        """Updated fix_fingers method with hop count to prevent infinite recursion"""
         print(f"Node {self.node_id}: Fixing fingers (hop count: {hop_count})")
         
         # Check hop count to prevent infinite propagation
-        MAX_HOPS = max_hops
-        if hop_count >= MAX_HOPS:
+        if hop_count >= max_hops:
             print(f"Node {self.node_id}: Max hop count reached. Stopping fix_fingers.")
             return ResponseCode.SUCCESS
         
@@ -260,7 +254,7 @@ class ComputeNodeHandler:
         try:
             self.init_finger_table()
             print(f"Node {self.node_id}: Finger table successfully initialized")
-            self.print_info()  # Print detailed node information after fixing fingers
+            self.print_info()
         except Exception as e:
             print(f"Error initializing finger table: {e}")
             return ResponseCode.ERROR
@@ -286,14 +280,12 @@ class ComputeNodeHandler:
                 protocol = TBinaryProtocol.TBinaryProtocol(transport)
                 node = ComputeNodeService.Client(protocol)
                 
-                # Open transport and call fix_fingers
                 transport.open()
                 print(f"Node {self.node_id}: Fixing fingers on successor {self.successor.id}")
                 
                 # Increment hop count when propagating
                 node.fix_fingers(initiator_id, hop_count + 1, max_hops)
                 
-                # Close transport
                 transport.close()
             
             except Exception as e:
@@ -305,12 +297,10 @@ class ComputeNodeHandler:
             print(f"Node {self.node_id}: Finger table update completed full circle")
             return ResponseCode.SUCCESS
         
-        # If we reach here, the fix_fingers call was successful
         print(f"Node {self.node_id}: Fix_fingers completed successfully")
         return ResponseCode.SUCCESS
     
     def find_successor(self, id):
-        """Find the successor node for a given ID"""
         # If ID is between this node and its successor, return successor
         if self.is_between(id, self.node_id, self.successor.id, True):
             return self.successor
@@ -318,7 +308,6 @@ class ComputeNodeHandler:
         # Otherwise, forward the query to the closest preceding node
         closest_preceding = self.closest_preceding_node(id)
         
-        logging.debug(f"Data distribution: Node {self.node_id} forwarding to {closest_preceding.id}")
         print(f"Node {self.node_id}: Closest preceding node for {id} is {closest_preceding.id}")
         
         # If closest preceding node is this node, return successor
@@ -331,7 +320,6 @@ class ComputeNodeHandler:
             protocol = TBinaryProtocol.TBinaryProtocol(transport)
             node = ComputeNodeService.Client(protocol)
             
-            
             transport.open()
             print(f"Node {self.node_id}: Forwarding find_successor to node {closest_preceding.id}")
             result = node.find_successor(id)
@@ -342,30 +330,18 @@ class ComputeNodeHandler:
             print(f"Error in find_successor: {e}")
             return self.successor
     
-    def find_successor_local(self, id):
-        """Local version of find_successor to avoid circular imports during initialization"""
-        # If ID is between this node and its successor, return successor
-        if self.is_between(id, self.node_id, self.successor.id, True):
-            return self.successor
-        
-        # Otherwise, return the successor (simplified for initialization)
-        return self.successor
-    
     def closest_preceding_node(self, id):
-        """Find the closest preceding node for a given ID in the finger table"""
         # Search backwards through finger table
         for i in range(len(self.finger_table) - 1, -1, -1):
             finger_id = self.finger_table[i].node.id
             
             # Check if finger is between current node and target id
             if self.is_between(finger_id, self.node_id, id, False):
-                logging.debug(f"Node {self.node_id}: Closest preceding node for {id} is {finger_id} on finger {i}")
                 return self.finger_table[i].node
         
         return NodeAddress(ip=self.ip, port=self.port, id=self.node_id)
     
     def is_between(self, id, start, end, inclusive=False):
-        """Check if id is between start and end in the circular ID space"""
         # Handle wrap-around in the circular ID space
         if start < end:
             if inclusive:
@@ -379,16 +355,13 @@ class ComputeNodeHandler:
                 return start < id or id < end
     
     def get_predecessor(self):
-        """Get this node's predecessor"""
         return self.predecessor
     
     def set_predecessor(self, node):
-        """Set this node's predecessor"""
         self.predecessor = node
         return ResponseCode.SUCCESS
     
     def set_successor(self, node):
-        """Set this node's successor"""
         self.successor = node
         
         # Update first finger entry
@@ -397,21 +370,20 @@ class ComputeNodeHandler:
         
         return ResponseCode.SUCCESS
     
-    # Data distribution and retrieval methods
-    
     def hash_filename(self, filename):
-        """Hash a filename to a node ID in the Chord network"""
         # Create a hash of the filename
         hash_obj = hashlib.md5(filename.encode())
         # Convert to int and take modulo max_nodes
         return int(hash_obj.hexdigest(), 16) % self.max_nodes
     
     def put_data(self, filename):
-        """Store data in the DHT or forward to the appropriate node"""
         # Hash the filename to get its key
         key = self.hash_filename(filename)
         
         print(f"Node {self.node_id}: Received put_data for file {filename} with key {key}")
+        
+        with open(f'routing/{filename}_routing.txt', 'a') as file:
+            file.write(f"Node ID: {self.node_id}, Filename: {filename}, Key: {key}, Time: {time.time()}\n")
         
         # Check if this node is responsible for this key
         if self.is_between(key, self.predecessor.id, self.node_id, True):
@@ -451,7 +423,6 @@ class ComputeNodeHandler:
                 return ResponseCode.ERROR
     
     def get_model(self, filename):
-        """Retrieve a model from the DHT or forward to the appropriate node"""
         # Hash the filename to get its key
         key = self.hash_filename(filename)
         
@@ -505,7 +476,6 @@ class ComputeNodeHandler:
                 return ModelWeights(V=[], W=[], training_complete=False)
     
     def train_data(self, filename):
-        """Train a model on the given file"""
         with self.training_lock:
             print(f"Node {self.node_id}: Starting training for file {filename}")
             
@@ -540,7 +510,6 @@ class ComputeNodeHandler:
                 self.stored_data[filename] = False
     
     def print_info(self):
-        """Print node information for debugging"""
         print("\n---- Node Information ----")
         print(f"Node ID: {self.node_id}")
         print(f"IP:Port: {self.ip}:{self.port}")
@@ -588,6 +557,25 @@ if __name__ == '__main__':
         sys.exit(1)
     
     port = int(sys.argv[1])
+    if not os.path.exists('compute_nodes.txt'):
+        print("compute_nodes.txt not found")
+        sys.exit(1)
+        
+    # Read the supernode address from the file
+    with open('compute_nodes.txt', 'r') as file:
+        lines = file.readlines()
+        if not lines:
+            print("No compute nodes found")
+            sys.exit(1)
+        # Assuming the first line contains the supernode address
+        supernode_info = lines[0].strip().split(',')
+        if len(supernode_info) != 2:
+            print("Invalid compute node address format")
+            sys.exit(1)
+        supernode_host = supernode_info[0]
+        supernode_port = int(supernode_info[1])
+        
     supernode_host = 'csel-kh1250-10.cselabs.umn.edu'
-    supernode_port = 9090
+    supernode_port = 8000
+        
     run_server(port, supernode_host, supernode_port)
