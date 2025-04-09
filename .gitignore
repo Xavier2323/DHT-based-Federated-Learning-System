@@ -1,5 +1,5 @@
-/__pycache__/
-./DS_STORE
-/*.log
-/*.pdf
-/routing
+__pycache__/
+*.log
+*.pdf
+.DS_Store
+routing/
