@@ -14,7 +14,7 @@ from thrift.protocol import TBinaryProtocol
 from service import ComputeNodeService, SupernodeService
 from service.ttypes import NodeAddress, ModelWeights, ResponseCode
 
-from ML.ML import mlp
+from ML.ML import mlp, scale_matricies, sum_matricies
 
 class Client:
     def __init__(self, supernode_host='0.0.0.0', supernode_port=9090):
@@ -139,12 +139,12 @@ class Client:
         
         # Sum all models
         for V, W in models.values():
-            avg_V += V
-            avg_W += W
+            avg_V = sum_matricies(avg_V, V)
+            avg_W = sum_matricies(avg_W, W)
         
         # Calculate average
-        avg_V /= len(models)
-        avg_W /= len(models)
+        avg_V = scale_matricies(avg_V, 1.0 / len(models))
+        avg_W = scale_matricies(avg_W, 1.0 / len(models))
         
         # print(f"Aggregated model V: {avg_V}, W: {avg_W}")
         print(len(models), "models aggregated")
@@ -172,8 +172,23 @@ if __name__ == '__main__':
     data_dir = sys.argv[1]
     validation_file = sys.argv[2]
     
-    supernode_host = '0.0.0.0'
-    supernode_port = 9090
+    if not os.path.exists('compute_nodes.txt'):
+        print("compute_nodes.txt not found")
+        sys.exit(1)
+        
+    # Read the supernode address from the file
+    with open('compute_nodes.txt', 'r') as file:
+        lines = file.readlines()
+        if not lines:
+            print("No compute nodes found")
+            sys.exit(1)
+        # Assuming the first line contains the supernode address
+        supernode_info = lines[0].strip().split(',')
+        if len(supernode_info) != 2:
+            print("Invalid compute node address format")
+            sys.exit(1)
+        supernode_host = supernode_info[0]
+        supernode_port = int(supernode_info[1])
     
     client = Client(supernode_host, supernode_port)
     

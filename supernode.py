@@ -104,9 +104,23 @@ if __name__ == '__main__':
     os.makedirs(routing_dir)
     print(f"Created {routing_dir}")
     
+    # Read the supernode address from the file
+    with open('compute_nodes.txt', 'r') as file:
+        lines = file.readlines()
+        if not lines:
+            print("No compute nodes found")
+            sys.exit(1)
+        # Assuming the first line contains the supernode address
+        supernode_info = lines[0].strip().split(',')
+        if len(supernode_info) != 2:
+            print("Invalid compute node address format")
+            sys.exit(1)
+        supernode_host = supernode_info[0]
+        supernode_port = int(supernode_info[1])
+    
     handler = SupernodeHandler()
     processor = SupernodeService.Processor(handler)
-    transport = TSocket.TServerSocket(host='0.0.0.0', port=9090)
+    transport = TSocket.TServerSocket(host='0.0.0.0', port=supernode_port)
     tfactory = TTransport.TBufferedTransportFactory()
     pfactory = TBinaryProtocol.TBinaryProtocolFactory()
     

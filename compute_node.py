@@ -557,6 +557,25 @@ if __name__ == '__main__':
         sys.exit(1)
     
     port = int(sys.argv[1])
-    supernode_host = 'csel-kh1250-06.cselabs.umn.edu'
-    supernode_port = 9090
+    if not os.path.exists('compute_nodes.txt'):
+        print("compute_nodes.txt not found")
+        sys.exit(1)
+        
+    # Read the supernode address from the file
+    with open('compute_nodes.txt', 'r') as file:
+        lines = file.readlines()
+        if not lines:
+            print("No compute nodes found")
+            sys.exit(1)
+        # Assuming the first line contains the supernode address
+        supernode_info = lines[0].strip().split(',')
+        if len(supernode_info) != 2:
+            print("Invalid compute node address format")
+            sys.exit(1)
+        supernode_host = supernode_info[0]
+        supernode_port = int(supernode_info[1])
+        
+    supernode_host = 'csel-kh1250-10.cselabs.umn.edu'
+    supernode_port = 8000
+        
     run_server(port, supernode_host, supernode_port)
