@@ -1,13 +1,14 @@
 import glob
 import sys
 import os
+import time
+import numpy as np
+
+# Add Thrift generated code to path
 sys.path.append('gen-py')
 sys.path.insert(0, glob.glob('../thrift-0.19.0/lib/py/build/lib*')[0])
 
-import time
-import numpy as np
-from thrift.transport import TSocket
-from thrift.transport import TTransport
+from thrift.transport import TSocket, TTransport
 from thrift.protocol import TBinaryProtocol
 
 from service import ComputeNodeService, SupernodeService
@@ -79,7 +80,7 @@ class Client:
             for filename in files:
                 print(f"Sending file {filename}")
                 node.put_data(filename)
-            
+                
             transport.close()
             return files
         except Exception as e:
